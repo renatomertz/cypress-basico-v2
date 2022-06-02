@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', cactat => {
+  cy.visit('./src/index.html');
+
+  cy.get('#firstName').should('be.visible').type(cactat.firstName)
+  .get('#lastName').should('be.visible').type(cactat.lastName)
+  .get('#email').should('be.visible').type(cactat.email)
+  .get('#open-text-area').should('be.be.visible').type(cactat.mensage, {'delay' : 0})
+  .get('form').contains('Enviar').click()
+})
