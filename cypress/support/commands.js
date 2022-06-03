@@ -29,6 +29,7 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', cactat => {
   cy.get('#firstName').should('be.visible').type(cactat.firstName)
   .get('#lastName').should('be.visible').type(cactat.lastName)
   .get('#email').should('be.visible').type(cactat.email)
-  .get('#open-text-area').should('be.be.visible').type(cactat.mensage, {'delay' : 0})
-  .get('form').contains('Enviar').click()
+  .get('#open-text-area').should('be.be.visible').type(cactat.mensage)
+  
+  cy.contains('button','Enviar').click()
 })
